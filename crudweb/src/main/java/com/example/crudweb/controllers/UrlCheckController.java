@@ -1,17 +1,13 @@
 package com.example.crudweb.controllers;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,47 +15,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 public class UrlCheckController {
-    
-    private final String SITE_IS_UP = "Site is up";
-    private final String SITE_IS_DOWN = "Site is down";
-    private final String SITE_SUPER_DOWN = "Site is super down";
-    private final String INCORRECT_URL = "Bad URL sent";    
 
     private final String USERNAME = "root";
     private final String PASSWORD = "Password1!";
     private final String URL = "jdbc:mysql://localhost:3306/stContactsDB";
 
-    @GetMapping("/check")
-    public String getUrlStattusMessage(@RequestParam String url){
-        String returnMessage = "";
+    @RequestMapping(value = "/addUser", produces = "application/json")
+    public String addUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String phoneNumber, 
+        @RequestParam String address1, @RequestParam String address2, @RequestParam String email, @RequestParam String birthday, Boolean isWork){
+        String query = "INSERT INTO contacts (firstName, lastName, phoneNumber, address1, address2, email, birthday, isWork) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            URL urlObj = new URL(url);
-            HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
-            con.setRequestMethod("GET");
-            con.connect();
-            int responseCodeCategory = con.getResponseCode() / 100;
-            if (responseCodeCategory > 3){
-                returnMessage = SITE_IS_DOWN;
+            Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, phoneNumber);
+            statement.setString(4, address1);
+            statement.setString(5, address2);
+            statement.setString(6, email);
+            statement.setString(7, birthday);
+
+            if(isWork == null || isWork == false){
+                statement.setInt(8, 0);
             } else {
-                returnMessage = SITE_IS_UP;
+                statement.setInt(8, 1);
             }
-        } catch (MalformedURLException e) {
+            
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
             e.printStackTrace();
-            returnMessage = INCORRECT_URL;
-        } catch (IOException e) {
-            returnMessage = SITE_SUPER_DOWN;
+            return "SQL Entry Failed";
         }
 
-        return returnMessage;
+        return "Completed";
     }
 
-    @GetMapping("/getContacts")
-    public List<String> getRecieveMessage(){
 
-        String query = "select * from contacts";
+    @RequestMapping(value = "/getContacts", produces = "application/json")
+    public List<List<String>> getRecieveMessage(){
+
+        String query = "SELECT * FROM contacts";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -71,12 +70,13 @@ public class UrlCheckController {
             Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
-            List<String> contactData = new ArrayList<String>();
+            List<List<String>> contactData = new ArrayList<List<String>>();
 
             while(result.next()){
-                String tempUser = "";
-                for(int i = 1; i <= 3; i++){
-                    tempUser += result.getString(i) + ", ";
+                List<String> tempUser = new ArrayList<String>();
+
+                for(int i = 2; i <= 9; i++){
+                    tempUser.add(result.getString(i));
                 }
                 contactData.add(tempUser);
             }
@@ -85,7 +85,7 @@ public class UrlCheckController {
 
         } catch (SQLException e){
             e.printStackTrace();
-            List<String> badData = new ArrayList<String>();
+            List<List<String>> badData = new ArrayList<List<String>>();
             return badData;
         }
     }
