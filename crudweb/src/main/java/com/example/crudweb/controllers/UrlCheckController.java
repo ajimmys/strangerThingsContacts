@@ -58,7 +58,7 @@ public class UrlCheckController {
     @RequestMapping(value = "/getContacts", produces = "application/json")
     public List<List<String>> getRecieveMessage(){
 
-        String query = "SELECT * FROM contacts";
+        String query = "SELECT * FROM contacts ORDER BY lastName ASC;";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
