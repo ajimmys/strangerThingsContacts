@@ -9,4 +9,4 @@
 
 ## Start Front End
 Change to front end directory -- `cd /stranger-things-contacts`
-`npm start`
+Start front end -- `npm start`
