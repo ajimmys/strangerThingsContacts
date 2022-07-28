@@ -3,8 +3,7 @@ import React, {useState, useEffect} from "react";
 import Axios from "axios";
 
 // reference for next video if I need it -- https://www.youtube.com/watch?v=_S2GKnFpdtE
-// Start - sudo /usr/local/mysql/support-files/mysql.server start
-// Stop - sudo /usr/local/mysql/support-files/mysql.server stop
+// https://www.google.com/search?client=safari&rls=en&q=get+docker+network+ip&ie=UTF-8&oe=UTF-8
 
 function App() {
 

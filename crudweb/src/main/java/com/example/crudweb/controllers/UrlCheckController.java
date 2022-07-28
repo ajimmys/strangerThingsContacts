@@ -20,7 +20,7 @@ public class UrlCheckController {
 
     private final String USERNAME = "root";
     private final String PASSWORD = "Password1!";
-    private final String URL = "jdbc:mysql://localhost:3306/stContactsDB";
+    private final String URL = "jdbc:mysql://mysqldb:3306/stContactsDB";
 
     @RequestMapping(value = "/addUser", produces = "application/json")
     public String addUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String phoneNumber, 
