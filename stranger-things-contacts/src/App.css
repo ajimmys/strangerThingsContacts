@@ -1,3 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque&family=Permanent+Marker&family=Questrial&display=swap');
+
+/* for upsidedown contacts font-family: 'Permanent Marker', cursive;*/
+
+html, body{
+  margin: 0;
+}
+
+.homeContainer{
+  display: flex;
+  flex-direction: row;
+  font-family: 'Questrial', sans-serif;
+  background-color: #FFFDD0;
+  height: 100vh;
+  width: 100vw;
+
+  transition: ease-in 1s;
+}
+
+.overLoad{
+  background-color:rgba(50, 45, 62, .0);
+  height: 100%;
+  width: 100%;
+
+
+  animation: pulse 2s ease-out;
+  position: absolute;
+  z-index: 3;
+}
+
+@keyframes pulse {
+  0% { background-color:rgba(50, 45, 62, .0)}
+  50% { background-color:rgba(50, 45, 62, 1)}
+  100%{ background-color:rgba(50, 45, 62, .0)}
+}
+
+.homeContainer.evil {
+  font-family: 'Permanent Marker', cursive;
+  background-color: rgb(50, 45, 62);
+}
+
+.contactList{
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  font-size: 1.5rem;
+
+  max-height: 100vh;
+  overflow: auto;
+  direction: rtl;
+
+  position: relative;
+  z-index: 4;
+
+  transition: ease-in .5s;
+}
+
+.contactList.evil {
+  transform: translateX(80vw);
+  direction: ltr;
+
+  transition-delay: .5s;
+}
+
+.singleContact{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.7);
+  padding-left: 2rem;
+  background-color: #f9f9f2;
+  direction: ltr;
+  font-family: 'Darker Grotesque', sans-serif;
+}
+
+.singleContact .phoneNumber{
+  color: gray;
+  padding-top: .2rem;
+  padding-bottom: .4rem;
+}
+
+.focusContact{
+  border-left: 1px gray solid;
+
+  width: 79.7vw;
+  font-size: 3rem;
+  background-color: #FFFDD0;
+
+  transition: ease-in 1s;
+  z-index: 1;
+}
+
+.focusContact.evil {
+  transform: translateX(-20vw);
+  color: red;
+  border-right: 1px gray solid;
+  background-color: rgb(50, 45, 62);
+  text-align: end;
+}
+
+.focusContact .contactName{
+  color: white;
+  padding: 1rem 5rem 1rem;
+
+  transition: ease-in 1s;
+  background-color: green;
+  border-bottom: gold solid .5rem;
+
+}
+
+.focusContact.evil .contactName{
+  background-color: black;
+  color: rgb(87, 80, 103);
+  border-bottom: red solid .5rem;
+}
+
+.focusContact .phoneNumber{
+  font-size: 2rem;
+  padding-left: 4rem;
+}
+
+.focusContact.evil .phoneNumber{
+  transition: ease-in 1s;
+  padding-right: 4rem;
+}
+
+.focusContact .contactInfo {
+  font-size: 1.5rem;
+  padding-left: 5rem;
+}
+
+.focusContact.evil .contactInfo {
+  transition: ease-in 1s;
+  padding-right: 5rem;
+}
+
 .App {
   text-align: center;
 }
@@ -12,9 +145,4 @@
   width: 10rem;
   height: 1rem;
   margin: .25rem;
-}
-
-.phoneNumber{
-  color: gray;
-  font-size: .85rem;
 }
