@@ -9,7 +9,8 @@ class Home extends Component{
         this.state = {
             data: [],
             contact: '',
-            isEvil: false 
+            isEvil: false,
+            fade: false,
         }
 
     }
@@ -22,27 +23,20 @@ class Home extends Component{
 
     handleClick = (contact) => {
         this.setState({contact: contact})
-        this.setState({isEvil: checkIsUpsideDown(contact[7])})
+        this.setState({isEvil: checkIsUpsideDown(contact[7])});
+        this.setState({fade : true})
+    }
+
+    handleAnimation = () => {
+        this.setState({fade : false})
     }
 
     render(){
-        var renderConatiner = this.state.isEvil ? (
-            <div className="homeContainer evil">
-                <NameListComponent handleClick={this.handleClick} isEvil={this.state.isEvil}/>
-                <ContactDisplayComponent contact={this.state.contact} isEvil={this.state.isEvil}/>
-            </div>
-    
-        ) : (
-            <div className="homeContainer">
-                <NameListComponent handleClick={this.handleClick} isEvil={this.state.isEvil}/>
-                <ContactDisplayComponent contact={this.state.contact} isEvil={this.state.isEvil}/>
-            </div>
-        )
     
         return(
-            <div>
-                <div className="overLoad"></div>
-                {renderConatiner}     
+            <div className={this.state.isEvil ? "homeContainer evil" : "homeContainer"}>
+                <NameListComponent handleClick={this.handleClick} isEvil={this.state.isEvil}/>
+                <ContactDisplayComponent contact={this.state.contact} isEvil={this.state.isEvil} fade={this.state.fade} handleAnimation={this.handleAnimation}/>
             </div>
         )}
 }

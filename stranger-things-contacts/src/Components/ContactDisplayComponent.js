@@ -8,12 +8,12 @@ function ContactDisplayComponent (props) {
         </div> : 
         props.isEvil ? (
             <div className="focusContact evil">
-                <p className="contactName">{props.contact[0]} {props.contact[1]}</p>
-                <p className="phoneNumber"> {formatPhoneNumber(props.contact[2])} </p>
-                <p className="contactInfo"> {props.contact[3]} </p> 
-                <p className="contactInfo">{props.contact[4]}</p>
-                <p className="contactInfo"> {props.contact[5]} </p>
-                <p className="contactInfo"> {formatDate(props.contact[6])} </p>
+                    <p className="contactName">{props.contact[0]} {props.contact[1]}</p>
+                    <p className="phoneNumber"> {formatPhoneNumber(props.contact[2])} </p>
+                    <p className="contactInfo"> {props.contact[3]} </p> 
+                    <p className="contactInfo">{props.contact[4]}</p>
+                    <p className="contactInfo"> {props.contact[5]} </p>
+                    <p className="contactInfo"> {formatDate(props.contact[6])} </p>
             </div>
         ) 
         : (
@@ -28,7 +28,7 @@ function ContactDisplayComponent (props) {
         )
 
         return (
-            <div>
+            <div className={props.fade ? (props.isEvil ? 'fadeEvil' : 'fade') : ''} onAnimationEnd={props.handleAnimation}>
                 {display}
             </div>
         );
