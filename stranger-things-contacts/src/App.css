@@ -117,6 +117,25 @@ html, body{
   padding-left: 5rem;
 }
 
+.button{
+  background-color: lightblue;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 1rem;
+  position: absolute;
+  left: 82vw;
+  top: 82vh;
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  transition: .3s ease-in-out;
+}
+
+.button:hover{
+  box-shadow: 0 0 40px 40px red inset;
+  color: white;
+}
+
 .App {
   text-align: center;
 }

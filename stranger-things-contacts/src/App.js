@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useState, useEffect} from "react";
 import Axios from "axios";
+import {Link} from "react-router-dom";
 
 // reference for next video if I need it -- https://www.youtube.com/watch?v=_S2GKnFpdtE
 // https://www.google.com/search?client=safari&rls=en&q=get+docker+network+ip&ie=UTF-8&oe=UTF-8
@@ -51,15 +52,10 @@ function App() {
 
         <button onClick={submitNewContact}>Submit</button>
       </div>
-      {data.map((val) => {
-          return (
-              <div>
-                <p>Name: {val[0]} {val[1]}</p>
-                <p>Phone: {val[2]} </p>
-                <p>Address: {val[3]} </p>
-              </div>
-          )
-        })}
+
+      <nav>
+        <Link to="/" className="button">Return Home</Link>
+      </nav>
     </div>
   );
 }
