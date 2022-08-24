@@ -18,6 +18,15 @@
     background-color: green;
     color: white;
     border-bottom: gold solid .5rem;
+    transition: ease-in 1s;
+}
+
+.App.evil > h1 {
+    padding: 1em;
+    margin-top: 0;
+    background-color: rgb(50, 45, 62);
+    color: #ff1515;
+    border-bottom: #1e0707 solid .5rem;
 }
   
 .inputForm{
