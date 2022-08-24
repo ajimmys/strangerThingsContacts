@@ -1,0 +1,19 @@
+html, body{
+    margin: 0;
+  }
+
+.button{
+    background-color: lightblue;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+    transition: .4s ease-in-out;
+  }
+  
+.button:hover{
+    box-shadow: 0 0 40px 40px red inset;
+    color: white;
+}

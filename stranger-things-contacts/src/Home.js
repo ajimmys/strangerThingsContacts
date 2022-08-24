@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import ContactDisplayComponent from './Components/ContactDisplayComponent';
 import NameListComponent from './Components/NameListComponent';
-import ContactDisplayComponent from './Components/ContactDisplayComponent'
 import { checkIsUpsideDown } from './Helpers/formatting';
+import './Style/Contacts.css';
+import './Style/Site.css';
 
 class Home extends Component{
     constructor(){

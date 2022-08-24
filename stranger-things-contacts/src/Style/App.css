@@ -1,0 +1,52 @@
+.App {
+    text-align: center;
+    font-family: 'Questrial', sans-serif;
+    background-color: #FFFDD0;
+    height: 100vh;
+    transition: ease-in 1s;
+}
+
+.App.evil{
+    color: #ff1515;
+    font-family: 'Permanent Marker', cursive;
+    background-color: rgba(30, 25, 60, 1);
+}
+
+.App > h1 {
+    padding: 1em;
+    margin-top: 0;
+    background-color: green;
+    color: white;
+    border-bottom: gold solid .5rem;
+}
+  
+.inputForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+.inputForm input{
+    width: 15rem;
+    height: 2rem;
+    font-size: 1rem;
+    margin: .25rem;
+    font-family: inherit;
+  }
+
+#workCheckboxContainer{
+    margin: 1rem;
+}
+
+#workCheckbox{
+    width: 1rem;
+    height: 1rem;
+    margin-right: 1rem;
+}
+
+.inputForm button{
+    font-family: inherit;
+    margin-top: 1rem;
+    padding: 9px;
+    font-size: 1.5rem;
+}

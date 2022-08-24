@@ -1,6 +1,6 @@
 import React from "react";
-import {formatPhoneNumber, formatDate} from "../Helpers/formatting"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { formatDate, formatPhoneNumber } from "../Helpers/formatting";
 
 function ContactDisplayComponent (props) {
         var display = props.contact === '' ? 
@@ -32,7 +32,7 @@ function ContactDisplayComponent (props) {
             <div className={props.fade ? (props.isEvil ? 'fadeEvil' : 'fade') : ''} onAnimationEnd={props.handleAnimation}>
                 {display}
                 <nav>
-                    <Link to="/addContact" className="button">+ New Contact</Link>
+                    <Link to="/addContact" className="button newContactButton">+ New Contact</Link>
                 </nav>
             </div>
         );
